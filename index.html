@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blackout RP – Deutscher FiveM Apocalypse Roleplay Server">
+  <meta name="theme-color" content="#0b0d0f">
+  <title>Blackout RP | Apocalypse Roleplay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="navbar">
+    <a class="logo" href="#start" aria-label="Blackout RP Startseite">
+      <span class="logo-mark">B</span>
+      <span>BLACKOUT <b>RP</b></span>
+    </a>
+
+    <button class="menu-button" id="menuButton" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="navigation">
+      <a href="#start">Start</a>
+      <a href="#konzept">Konzept</a>
+      <a href="#regelwerk">Regelwerk</a>
+      <a href="#fraktionen">Fraktionen</a>
+      <a href="#team">Team</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a class="nav-discord" href="https://discord.gg/DEIN-LINK" target="_blank" rel="noopener">Discord</a>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">DEUTSCHER FIVEM APOCALYPSE ROLEPLAY SERVER</p>
+        <h1>WENN DAS LICHT<br><span>ERLISCHT</span></h1>
+        <p class="hero-text">
+          Die alte Welt ist gefallen. Strom, Ordnung und Sicherheit sind Geschichte.
+          Baue dir ein neues Leben auf, schließe dich einer Fraktion an und entscheide,
+          ob du Hoffnung bringst – oder Chaos.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://discord.gg/DEIN-LINK" target="_blank" rel="noopener">Jetzt beitreten</a>
+          <a class="button secondary" href="#regelwerk">Regelwerk lesen</a>
+        </div>
+        <div class="server-status">
+          <span class="status-dot"></span>
+          <span>BLACKOUT RP</span>
+          <strong>APOCALYPSE ROLEPLAY</strong>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <span>ENTDECKEN</span>
+        <div></div>
+      </div>
+    </section>
+
+    <section class="section intro" id="konzept">
+      <div class="section-heading reveal">
+        <p class="eyebrow">UNSER KONZEPT</p>
+        <h2>ÜBERLEBEN IST ERST<br>DER ANFANG</h2>
+        <p>
+          Blackout RP verbindet ernstes Roleplay mit einer zerstörten Welt, knappen Ressourcen
+          und einem dynamischen Konflikt zwischen Ordnung und Anarchie.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <span class="feature-number">01</span>
+          <div class="feature-icon">⚡</div>
+          <h3>Dynamisches Stromnetz</h3>
+          <p>Stromausfälle verändern die Stadt. Systeme fallen aus, Dunkelheit breitet sich aus und Reparaturteams werden gebraucht.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <span class="feature-number">02</span>
+          <div class="feature-icon">☣</div>
+          <h3>Apokalypse-Welt</h3>
+          <p>Zerstörte Gebiete, gefährliche Zonen, Ressourcenknappheit und eine Welt, die sich durch das Roleplay weiterentwickelt.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <span class="feature-number">03</span>
+          <div class="feature-icon">⚔</div>
+          <h3>Fraktionskonflikte</h3>
+          <p>Die Atlas Einheit schützt die Bevölkerung, während die Raiders Gebiete erobern, Fahrzeuge stehlen und das Stromnetz sabotieren.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <span class="feature-number">04</span>
+          <div class="feature-icon">▦</div>
+          <h3>Eigene Wirtschaft</h3>
+          <p>Verdiene Geld durch zivile Berufe, Handel, Aufträge oder riskante Missionen. Jede Entscheidung hat Auswirkungen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section rules-section" id="regelwerk">
+      <div class="section-heading reveal">
+        <p class="eyebrow">REGELWERK</p>
+        <h2>REGELN SCHAFFEN<br>GUTES ROLEPLAY</h2>
+        <p>Mit der Suche findest du schnell die passende Regel. Ersetze die Beispieltexte später durch euer vollständiges Regelwerk.</p>
+      </div>
+
+      <div class="rules-layout">
+        <aside class="rules-sidebar reveal">
+          <label for="ruleSearch">Regel suchen</label>
+          <input id="ruleSearch" type="search" placeholder="z. B. RDM, OOC, Safezone">
+          <button class="rule-tab active" data-category="all">Alle Regeln</button>
+          <button class="rule-tab" data-category="general">Allgemeines</button>
+          <button class="rule-tab" data-category="roleplay">Roleplay</button>
+          <button class="rule-tab" data-category="combat">Kampf & Gewalt</button>
+          <button class="rule-tab" data-category="factions">Fraktionen</button>
+          <button class="rule-tab" data-category="support">Support</button>
+        </aside>
+
+        <div class="rules-list">
+          <article class="rule-card reveal" data-category="general">
+            <button class="rule-header">
+              <span><b>§1</b> Allgemeines Verhalten</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Jeder Spieler ist respektvoll zu behandeln. Beleidigungen, Diskriminierung, Trolling und absichtliches Stören des Roleplays sind untersagt.</p>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="roleplay">
+            <button class="rule-header">
+              <span><b>§2</b> Realistisches Roleplay</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Handlungen müssen nachvollziehbar und der Situation entsprechend ausgespielt werden. Unrealistisches Verhalten kann sanktioniert werden.</p>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="roleplay">
+            <button class="rule-header">
+              <span><b>§3</b> Metagaming und Powergaming</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Informationen aus Discord, Streams oder anderen OOC-Quellen dürfen nicht IC verwendet werden. Anderen Spielern darf keine unrealistische Handlung aufgezwungen werden.</p>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="combat">
+            <button class="rule-header">
+              <span><b>§4</b> RDM und VDM</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Das grundlose Töten oder Anfahren anderer Spieler ist verboten. Gewalthandlungen benötigen einen ausreichenden Roleplay-Hintergrund.</p>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="combat">
+            <button class="rule-header">
+              <span><b>§5</b> New-Life-Regel</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Nach dem vollständigen Tod darf sich der Charakter nicht an die letzten Ereignisse erinnern und nicht direkt an den Ort der Situation zurückkehren.</p>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="factions">
+            <button class="rule-header">
+              <span><b>§6</b> Fraktionshandlungen</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Fraktionsaktionen müssen geplant, nachvollziehbar und fair ausgespielt werden. Gebietsangriffe oder Sabotagen dürfen nicht zum dauerhaften Farmen genutzt werden.</p>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="support">
+            <button class="rule-header">
+              <span><b>§7</b> Supportfälle</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Supportgespräche werden sachlich geführt. Beweise wie Clips oder Screenshots sollten vollständig und unbearbeitet eingereicht werden.</p>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="general">
+            <button class="rule-header">
+              <span><b>§8</b> Bugusing und Cheating</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>Das Ausnutzen von Fehlern, Duping, Mod-Menüs, unerlaubten Hilfsmitteln oder Grafikmodifikationen mit unfairen Vorteilen ist strengstens verboten.</p>
+            </div>
+          </article>
+
+          <p id="noRules" class="no-results">Keine passende Regel gefunden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section factions" id="fraktionen">
+      <div class="section-heading reveal">
+        <p class="eyebrow">FRAKTIONEN</p>
+        <h2>WÄHLE DEINE<br>SEITE</h2>
+      </div>
+
+      <div class="faction-grid">
+        <article class="faction-card atlas reveal">
+          <div class="faction-background"></div>
+          <div class="faction-content">
+            <p>ORDNUNG · SCHUTZ · WIEDERAUFBAU</p>
+            <h3>ATLAS<br>EINHEIT</h3>
+            <span>Die letzte organisierte Schutzmacht der Stadt. Sie bekämpft Plünderer, sichert Gebiete und schützt die verbleibende Bevölkerung.</span>
+            <a href="#team">Mehr erfahren →</a>
+          </div>
+        </article>
+
+        <article class="faction-card raiders reveal">
+          <div class="faction-background"></div>
+          <div class="faction-content">
+            <p>CHAOS · MACHT · ÜBERLEBEN</p>
+            <h3>THE<br>RAIDERS</h3>
+            <span>Eine brutale Gruppierung ohne Rücksicht auf die alte Ordnung. Sie erobert Gebiete, sabotiert Infrastruktur und nimmt sich, was sie braucht.</span>
+            <a href="#team">Mehr erfahren →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section team-section" id="team">
+      <div class="section-heading reveal">
+        <p class="eyebrow">SERVERTEAM</p>
+        <h2>DIE MENSCHEN<br>HINTER BLACKOUT</h2>
+        <p>Ändere Namen, Rollen, Bilder und Discord-Namen direkt in der Datei <strong>index.html</strong>.</p>
+      </div>
+
+      <div class="team-grid">
+        <article class="team-card reveal">
+          <div class="avatar"><span>FK</span></div>
+          <div class="team-role">PROJEKTLEITUNG</div>
+          <h3>Fynn</h3>
+          <p>Serverleitung, Konzept und Entwicklung</p>
+          <span class="discord-name">@didikoral</span>
+        </article>
+
+        <article class="team-card reveal">
+          <div class="avatar"><span>TL</span></div>
+          <div class="team-role">TEAMLEITUNG</div>
+          <h3>Dein Name</h3>
+          <p>Teamverwaltung und Qualitätssicherung</p>
+          <span class="discord-name">@discordname</span>
+        </article>
+
+        <article class="team-card reveal">
+          <div class="avatar"><span>DEV</span></div>
+          <div class="team-role">DEVELOPMENT</div>
+          <h3>Dein Entwickler</h3>
+          <p>Skripte, Fehlerbehebung und neue Systeme</p>
+          <span class="discord-name">@discordname</span>
+        </article>
+
+        <article class="team-card reveal">
+          <div class="avatar"><span>SUP</span></div>
+          <div class="team-role">SUPPORTLEITUNG</div>
+          <h3>Dein Supporter</h3>
+          <p>Spielersupport und Regelwerksfragen</p>
+          <span class="discord-name">@discordname</span>
+        </article>
+      </div>
+
+      <div class="join-team reveal">
+        <div>
+          <p class="eyebrow">WIR SUCHEN DICH</p>
+          <h3>WERDE TEIL DES TEAMS</h3>
+          <p>Du bist zuverlässig, freundlich und möchtest Blackout RP aktiv mitgestalten? Dann bewirb dich über unseren Discord.</p>
+        </div>
+        <a class="button primary" href="https://discord.gg/DEIN-LINK" target="_blank" rel="noopener">Jetzt bewerben</a>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq">
+      <div class="section-heading reveal">
+        <p class="eyebrow">HÄUFIGE FRAGEN</p>
+        <h2>FAQ</h2>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-card reveal">
+          <h3>Brauche ich FiveM?</h3>
+          <p>Ja. Du benötigst eine legale Version von GTA V und die aktuelle FiveM-Version.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3>Gibt es eine Whitelist?</h3>
+          <p>Trage hier ein, ob Spieler ein Bewerbungsgespräch oder eine Einreise benötigen.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3>Wie kann ich beitreten?</h3>
+          <p>Betritt unseren Discord, lies das Regelwerk und folge den dort beschriebenen Schritten.</p>
+        </article>
+        <article class="faq-card reveal">
+          <h3>Welche Sprache wird gesprochen?</h3>
+          <p>Blackout RP ist ein deutschsprachiger Roleplay-Server.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="discord-banner">
+      <div class="reveal">
+        <p class="eyebrow">DEINE GESCHICHTE BEGINNT JETZT</p>
+        <h2>BIST DU BEREIT<br>FÜR DEN BLACKOUT?</h2>
+        <a class="button primary large" href="https://discord.gg/DEIN-LINK" target="_blank" rel="noopener">Discord beitreten</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#start">
+      <span class="logo-mark">B</span>
+      <span>BLACKOUT <b>RP</b></span>
+    </a>
+    <p>© <span id="year"></span> Blackout RP. Alle Rechte vorbehalten.</p>
+    <div class="footer-links">
+      <a href="#regelwerk">Regelwerk</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Nach oben">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
