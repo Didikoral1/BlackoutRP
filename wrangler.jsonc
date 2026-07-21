@@ -12,9 +12,9 @@
     "enabled": true
   },
   "vars": {
-    "DISCORD_GUILD_ID": "DEINE_DISCORD_SERVER_ID",
-    "FIVEM_JOIN_CODE": "DEIN_FIVEM_JOIN_CODE",
-    "NEXT_PUBLIC_DISCORD_INVITE": "https://discord.gg/DEIN-LINK",
+    "DISCORD_GUILD_ID": "1524898877700964373",
+    "FIVEM_JOIN_CODE": "cfx.re/join/xllzq5m",
+    "NEXT_PUBLIC_DISCORD_INVITE": "https://aliaslink.de/r/blackoutrp",
     "NEXT_PUBLIC_RESTART_HOURS": "4,12,20"
   }
 }
