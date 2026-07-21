@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "blackoutrp",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "DISCORD_GUILD_ID": "1524898877700964373",
+    "FIVEM_JOIN_CODE": "xllzq5m",
+    "NEXT_PUBLIC_DISCORD_INVITE": "https://aliaslink.de/r/blackoutrp",
+    "NEXT_PUBLIC_RESTART_HOURS": "4,12,20",
+    "FIVEM_STATUS_URL": "http://status.mc-server24.de:20018/dynamic.json"
+  }
+}
