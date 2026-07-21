@@ -1,39 +1,24 @@
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const botApiUrl = process.env.BOT_API_URL;
-
-  if (!botApiUrl) {
-    return Response.json(
-      {
-        online: false,
-        clients: 0,
-        maxClients: 0,
-        hostname: "Blackout RP",
-        error: "BOT_API_URL fehlt"
-      },
-      {
-        status: 500
-      }
-    );
-  }
+  const joinCode = process.env.FIVEM_JOIN_CODE || "xllzq5m";
 
   try {
     const response = await fetch(
-      `${botApiUrl.replace(/\/$/, "")}/status`,
+      "http://status.mc-server24.de:20018/dynamic.json",
       {
         cache: "no-store",
         signal: AbortSignal.timeout(8000),
         headers: {
           Accept: "application/json",
-          "User-Agent": "BlackoutRP Website"
+          "User-Agent": "Blackout-RP-Website/1.0"
         }
       }
     );
 
     if (!response.ok) {
       throw new Error(
-        `Bot API antwortet mit HTTP ${response.status}`
+        `FiveM-Server antwortet mit HTTP ${response.status}`
       );
     }
 
@@ -41,12 +26,19 @@ export async function GET() {
 
     return Response.json(
       {
-        online: Boolean(data.online),
+        online: true,
         clients: Number(data.clients || 0),
-        maxClients: Number(data.maxClients || 0),
-        hostname: data.hostname || "Blackout RP",
-        joinCode: data.joinCode || "",
-        joinUrl: data.joinUrl || ""
+        maxClients: Number(data.sv_maxclients || 0),
+        hostname: String(
+          data.hostname || "Blackout RP"
+        )
+          .replace(/\^[0-9]/g, "")
+          .trim(),
+        mapname: data.mapname || null,
+        gametype: data.gametype || null,
+        joinCode,
+        joinUrl: `https://cfx.re/join/${joinCode}`,
+        updatedAt: new Date().toISOString()
       },
       {
         headers: {
@@ -55,7 +47,7 @@ export async function GET() {
       }
     );
   } catch (error) {
-    console.error(error);
+    console.error("FiveM-Statusfehler:", error);
 
     return Response.json(
       {
@@ -63,13 +55,19 @@ export async function GET() {
         clients: 0,
         maxClients: 0,
         hostname: "Blackout RP",
+        joinCode,
+        joinUrl: `https://cfx.re/join/${joinCode}`,
         error:
           error instanceof Error
             ? error.message
-            : "Bot API nicht erreichbar"
+            : "FiveM-Status nicht erreichbar",
+        updatedAt: new Date().toISOString()
       },
       {
-        status: 500
+        status: 200,
+        headers: {
+          "Cache-Control": "no-store"
+        }
       }
     );
   }
