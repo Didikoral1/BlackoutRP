@@ -4,7 +4,7 @@
 */
 
 window.BLACKOUT_CONFIG = {
-  discordInvite: "https://discord.gg/DEIN-LINK",
+  discordInvite: "https://aliaslink.de/r/blackoutrp",
 
   // Beispiel: "abc123" aus cfx.re/join/abc123
   fivemJoinCode: "DEIN-JOIN-CODE",
