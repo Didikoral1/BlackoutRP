@@ -1,10 +1,9 @@
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const serverAddress = process.env.FIVEM_SERVER_ADDRESS;
-  const joinCode = process.env.FIVEM_JOIN_CODE || "xllzq5m";
+  const botApiUrl = process.env.BOT_API_URL;
 
-  if (!serverAddress) {
+  if (!botApiUrl) {
     return Response.json({
       online: false,
       clients: 0,
@@ -15,35 +14,26 @@ export async function GET() {
 
   try {
     const response = await fetch(
-      `http://${serverAddress}/dynamic.json`,
+      `${botApiUrl.replace(/\/$/, "")}/status`,
       {
-        cache: "no-store"
+        cache: "no-store",
+        signal: AbortSignal.timeout(7000)
       }
     );
 
     if (!response.ok) {
-      throw new Error(`FiveM antwortet mit Status ${response.status}`);
+      throw new Error(`Bot-API antwortet mit ${response.status}`);
     }
 
     const data = await response.json();
 
-    return Response.json(
-      {
-        online: true,
-        clients: Number(data.clients || 0),
-        maxClients: Number(data.sv_maxclients || 0),
-        hostname: String(data.hostname || "Blackout RP")
-          .replace(/\^[0-9]/g, ""),
-        joinUrl: `https://cfx.re/join/${joinCode}`
-      },
-      {
-        headers: {
-          "Cache-Control": "public, max-age=20"
-        }
+    return Response.json(data, {
+      headers: {
+        "Cache-Control": "public, max-age=20"
       }
-    );
+    });
   } catch (error) {
-    console.error("FiveM-Statusfehler:", error);
+    console.error("Status-API-Fehler:", error);
 
     return Response.json({
       online: false,
