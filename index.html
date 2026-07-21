@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blackout RP – Deutscher FiveM Apocalypse Roleplay Server">
+  <meta name="theme-color" content="#090806">
+  <link rel="icon" href="assets/blackout-logo.png" type="image/png">
+  <title>Blackout RP | Apocalypse Roleplay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="navbar">
+    <a href="#start" class="brand">
+      <img src="assets/blackout-logo.png" alt="Blackout RP Logo">
+      <span>BLACKOUT <b>RP</b></span>
+    </a>
+
+    <button class="menu-button" id="menuButton" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="navigation">
+      <a href="#start">Start</a>
+      <a href="#news">News</a>
+      <a href="#status">Serverstatus</a>
+      <a href="#regelwerk">Regelwerk</a>
+      <a href="#fraktionen">Fraktionen</a>
+      <a href="#team">Team</a>
+    </nav>
+
+    <a class="discord-small" data-discord-link target="_blank" rel="noopener">Discord</a>
+  </header>
+
+  <main>
+    <section id="start" class="hero">
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/blackout-logo.png">
+        <source src="assets/background.mp4" type="video/mp4">
+      </video>
+      <div class="hero-fallback"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content reveal">
+        <img class="hero-logo" src="assets/blackout-logo.png" alt="Blackout RP">
+        <p class="eyebrow">DEUTSCHER FIVEM APOCALYPSE ROLEPLAY SERVER</p>
+        <h1>ÜBERLEBE<br><span>DEN BLACKOUT</span></h1>
+        <p class="hero-description">
+          Die alte Welt ist gefallen. Strom, Ordnung und Sicherheit sind Geschichte.
+          Entscheide selbst, ob du den Wiederaufbau unterstützt oder das Chaos beherrschst.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button primary" data-discord-link target="_blank" rel="noopener">Discord beitreten</a>
+          <a class="button secondary" href="#regelwerk">Regelwerk lesen</a>
+        </div>
+
+        <div class="quick-status">
+          <div>
+            <span id="heroStatusDot" class="status-dot loading"></span>
+            <strong id="heroStatusText">Status wird geladen</strong>
+          </div>
+          <div>
+            <small>SPIELER</small>
+            <strong id="heroPlayers">– / –</strong>
+          </div>
+          <div>
+            <small>NÄCHSTER RESTART</small>
+            <strong id="restartTimer">–</strong>
+          </div>
+        </div>
+      </div>
+
+      <a href="#news" class="scroll-down">ENTDECKEN ↓</a>
+    </section>
+
+    <section id="news" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">AKTUELLES AUS DER APOKALYPSE</p>
+        <h2>NEWS & UPDATES</h2>
+        <p>Neue Inhalte, wichtige Ankündigungen und Änderungen am Server.</p>
+      </div>
+
+      <div id="newsGrid" class="news-grid"></div>
+    </section>
+
+    <section id="status" class="status-section">
+      <div class="status-inner">
+        <div class="section-heading reveal">
+          <p class="eyebrow">LIVE SERVERSTATUS</p>
+          <h2>BLACKOUT IST<br>ONLINE</h2>
+          <p>Die Anzeige aktualisiert sich automatisch. Trage deinen FiveM Join-Code in der Datei <strong>config.js</strong> ein.</p>
+        </div>
+
+        <div class="status-panel reveal">
+          <div class="status-main">
+            <span id="serverDot" class="status-dot loading"></span>
+            <div>
+              <small>SERVERSTATUS</small>
+              <h3 id="serverStatus">Wird geladen …</h3>
+            </div>
+          </div>
+
+          <div class="status-stats">
+            <div>
+              <small>SPIELER ONLINE</small>
+              <strong id="playersOnline">–</strong>
+            </div>
+            <div>
+              <small>MAXIMALE SLOTS</small>
+              <strong id="maxPlayers">–</strong>
+            </div>
+            <div>
+              <small>SERVERNAME</small>
+              <strong id="serverName">Blackout RP</strong>
+            </div>
+          </div>
+
+          <a id="fivemJoinButton" class="button primary full" href="#" target="_blank" rel="noopener">
+            Direkt verbinden
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="regelwerk" class="section rules-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">STAND: 19.07.2026</p>
+        <h2>SERVERREGELWERK</h2>
+        <p>
+          Mit dem Betreten des Servers akzeptierst du dieses Regelwerk.
+          Respekt, Fairness und glaubwürdiges Rollenspiel stehen immer an erster Stelle.
+        </p>
+      </div>
+
+      <div class="rules-layout">
+        <aside class="rules-sidebar reveal">
+          <label for="ruleSearch">Regel suchen</label>
+          <input id="ruleSearch" type="search" placeholder="z. B. RDM, Safezone, Loot">
+
+          <button class="rule-filter active" data-category="all">Alle Regeln</button>
+          <button class="rule-filter" data-category="allgemein">Allgemeines</button>
+          <button class="rule-filter" data-category="roleplay">Roleplay</button>
+          <button class="rule-filter" data-category="kampf">Kampf & Konflikte</button>
+          <button class="rule-filter" data-category="loot">Loot & Zonen</button>
+          <button class="rule-filter" data-category="fraktionen">Fraktionen</button>
+          <button class="rule-filter" data-category="support">Support</button>
+        </aside>
+
+        <div id="rulesList" class="rules-list">
+          <article class="rule-card reveal" data-category="allgemein">
+            <button class="rule-header">
+              <span><b>§1</b> Allgemeines Verhalten</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Behandle alle Spieler und Teammitglieder respektvoll. Beleidigungen sind nur im angemessenen RP-Kontext erlaubt.</li>
+                <li>Rassismus, Sexismus, extreme Diskriminierung, sexuelle Belästigung und menschenverachtende Inhalte sind verboten.</li>
+                <li>Trolling, absichtliches Stören von RP und provozierte Regelverstöße werden sanktioniert.</li>
+                <li>Das Ausnutzen von Bugs, Glitches oder Exploits ist verboten. Gefundene Fehler müssen dem Team gemeldet werden.</li>
+                <li>Cheats, Mod-Menüs, unerlaubte Hilfsmittel und das Weitergeben interner Informationen führen zum Ausschluss.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="roleplay">
+            <button class="rule-header">
+              <span><b>§2</b> Roleplay-Grundlagen</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Jeder Spieler muss sein Leben glaubwürdig schützen und Gefahren ernst nehmen (FearRP).</li>
+                <li>Unrealistisches oder erzwungenes RP (FailRP/PowerRP) ist verboten. Andere Spieler müssen eine faire Reaktionsmöglichkeit erhalten.</li>
+                <li>Informationen aus Discord, Streams oder anderen Quellen dürfen nicht im RP verwendet werden (Metagaming).</li>
+                <li>IC- und OOC-Angelegenheiten sind klar voneinander zu trennen. OOC-Diskussionen gehören nicht in laufende Situationen.</li>
+                <li>Das Verlassen des Servers während oder unmittelbar nach einer RP-Situation (Combat Logging) ist verboten.</li>
+                <li>Ein Serverneustart beendet eine laufende RP-Situation nicht automatisch. Die Situation wird danach fortgesetzt.</li>
+                <li>Soundboards, Stimmenverzerrer und unrealistische Charakterkonzepte dürfen RP nicht stören.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="kampf">
+            <button class="rule-header">
+              <span><b>§3</b> RDM und VDM</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>RDM: Das Töten oder Verletzen ohne nachvollziehbaren RP-Hintergrund ist verboten.</li>
+                <li>Vor einem Angriff muss grundsätzlich eine klare und verständliche RP-Interaktion stattfinden.</li>
+                <li>VDM: Fahrzeuge dürfen nicht ohne triftigen RP-Grund als Waffe eingesetzt werden.</li>
+                <li>Personen absichtlich zu überfahren oder dauerhaft zu rammen ist verboten.</li>
+                <li>Ein Fahrzeug darf nur zur Flucht oder in einer glaubwürdigen Ausnahmesituation defensiv eingesetzt werden.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="roleplay">
+            <button class="rule-header">
+              <span><b>§4</b> New-Life-Regel und Bewusstlosigkeit</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Bewusstlose Spieler dürfen sich nicht an Gespräche oder Informationen erinnern, die sie während ihrer Bewusstlosigkeit wahrgenommen haben.</li>
+                <li>Nach einer vollständigen Wiederbelebung mit Gedächtnisverlust darf nicht unmittelbar an den Ort der Niederlage zurückgekehrt werden.</li>
+                <li>Rache aufgrund einer vergessenen Situation ist verboten.</li>
+                <li>Eine Behandlung durch den EMS ist auszuspielen. Verletzungen dürfen nicht ignoriert werden.</li>
+                <li>Ein permanenter Charaktertod darf nicht ohne Zustimmung des betroffenen Spielers oder Entscheidung der Serverleitung erzwungen werden.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="kampf">
+            <button class="rule-header">
+              <span><b>§5</b> Überfälle und Geiselnahmen</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Überfälle benötigen einen nachvollziehbaren RP-Grund und eine klare Forderung.</li>
+                <li>Dem Gegenüber muss ausreichend Zeit zum Verstehen und Reagieren gegeben werden.</li>
+                <li>Unverhältnismäßige Forderungen sowie das vollständige Leerräumen eines Spielers sind verboten.</li>
+                <li>Geiseln dürfen nicht ohne RP-Grund verletzt oder getötet werden.</li>
+                <li>Abgesprochene Fake-Geiseln sind verboten.</li>
+                <li>Derselbe Spieler darf nicht wiederholt in kurzer Folge überfallen werden.</li>
+                <li>Atlas und EMS dürfen nicht allein wegen ihrer Dienstausrüstung überfallen oder entführt werden.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="loot">
+            <button class="rule-header">
+              <span><b>§6</b> Looting und Loot-Zonen</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Survivor dürfen die Karte, Ruinen und freigegebenen Gebiete nach Ressourcen durchsuchen.</li>
+                <li>Lootpunkte, Händler, Spawngebiete und wichtige Zugänge dürfen nicht abgecampt werden.</li>
+                <li>Es ist verboten, an einem Lootpunkt zu warten, um ankommende oder gerade lootende Spieler ohne echtes RP auszurauben oder zu töten.</li>
+                <li>Loot darf nicht durch Glitches, Makros oder andere unerlaubte Methoden vervielfältigt werden.</li>
+                <li>Das Plündern bewusstloser Spieler ist nur nach einer vorausgegangenen RP-Situation und im erlaubten Umfang gestattet.</li>
+                <li>Das absichtliche Verfolgen anderer Spieler ausschließlich wegen ihres Loots ist verboten.</li>
+                <li>Geschützte Zonen und serverseitige Loot-Beschränkungen sind einzuhalten.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="fraktionen">
+            <button class="rule-header">
+              <span><b>§7</b> Fraktionen und Gruppierungen</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <h4>Atlas-Einheit</h4>
+              <ul>
+                <li>Die Atlas-Einheit übernimmt staatliche Sicherheits- und Ordnungsaufgaben.</li>
+                <li>Maßnahmen müssen verhältnismäßig und im RP begründet sein.</li>
+                <li>Korruption oder Machtmissbrauch sind nur mit vorheriger Genehmigung der Fraktions- und Serverleitung erlaubt.</li>
+                <li>Dienstwaffen, Fahrzeuge und interne Informationen dürfen nicht ohne Genehmigung weitergegeben werden.</li>
+              </ul>
+
+              <h4>EMS</h4>
+              <ul>
+                <li>Der EMS ist grundsätzlich neutral und dient der medizinischen Versorgung.</li>
+                <li>EMS-Mitarbeiter dürfen während einer Behandlung nicht angegriffen, entführt oder ausgeraubt werden.</li>
+                <li>Die Neutralität darf nicht zur Informationsweitergabe oder Begünstigung einer Seite missbraucht werden.</li>
+                <li>Dienstmaterial und medizinische Ausrüstung dürfen nicht zweckentfremdet werden.</li>
+              </ul>
+
+              <h4>Gangs und andere Gruppierungen</h4>
+              <ul>
+                <li>Gangs benötigen ein erkennbares Konzept, Ziele und glaubwürdiges Verhalten.</li>
+                <li>Konflikte müssen sich aus dem RP entwickeln. Dauerhafte grundlose Kriege sind verboten.</li>
+                <li>Gangzugehörigkeit rechtfertigt keinen sofortigen Angriff.</li>
+                <li>Staatliche Organisationen dürfen nicht allein wegen ihrer Fraktionszugehörigkeit angegriffen werden.</li>
+                <li>Mitgliederlimits, Bündnisse und Gebietsregeln der Serverleitung sind einzuhalten.</li>
+              </ul>
+
+              <h4>Survivor</h4>
+              <ul>
+                <li>Survivor sind freie Überlebende und dürfen looten, handeln, reisen und Gruppen bilden.</li>
+                <li>Ein Survivor muss Gefahren ebenso ernst nehmen wie Mitglieder offizieller Organisationen.</li>
+                <li>Das Survivor-Konzept ist keine Rechtfertigung für RDM, Loot-Camping oder dauerhaftes Banditenverhalten ohne RP.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="kampf">
+            <button class="rule-header">
+              <span><b>§8</b> Schusswechsel und Konflikte</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Schusswechsel müssen eine nachvollziehbare Vorgeschichte besitzen.</li>
+                <li>Forderungen sind klar auszusprechen und müssen erfüllbar sein.</li>
+                <li>Nach einer erfüllten Forderung darf nicht grundlos geschossen werden.</li>
+                <li>Das Einmischen in fremde Schusswechsel ohne eigenen RP-Bezug ist verboten.</li>
+                <li>Nachrückende Spieler dürfen nur teilnehmen, wenn sie bereits glaubwürdig in die Situation eingebunden waren.</li>
+                <li>Das Wechseln des Charakters, um sich erneut an derselben Situation zu beteiligen, ist verboten.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card important reveal" data-category="kampf fraktionen">
+            <button class="rule-header">
+              <span><b>§8.1</b> Gebietseroberungen</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Bei einer Gebietseroberung darf ausschließlich innerhalb der sichtbar markierten Eroberungszone geschossen werden.</li>
+                <li>Schüsse von außerhalb in die Zone oder aus der Zone nach außen sind verboten.</li>
+                <li>Das Verlassen der Zone, um Gegner außerhalb zu bekämpfen, ist nicht erlaubt.</li>
+                <li>Das absichtliche Hinauslocken von Spielern aus der Zone, um sie dort anzugreifen, ist verboten.</li>
+                <li>Nur Spieler, die glaubwürdig und aktiv an der Gebietseroberung beteiligt sind, dürfen eingreifen.</li>
+                <li>Nach Ende oder Abbruch der Eroberung endet die besondere Schusserlaubnis sofort.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="roleplay">
+            <button class="rule-header">
+              <span><b>§9</b> Fahrzeuge und Apokalypse-Setting</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Fahrzeuge sind dem Setting entsprechend wertvoll und glaubwürdig zu behandeln.</li>
+                <li>Unrealistische Stunts, grundloses Rammen und dauerhaftes Fahren mit völlig zerstörten Fahrzeugen gelten als FailRP.</li>
+                <li>Reparaturen, Treibstoffmangel und Unfälle müssen angemessen ausgespielt werden.</li>
+                <li>Fraktionsfahrzeuge dürfen nur mit nachvollziehbarem RP-Grund entwendet werden.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="loot kampf">
+            <button class="rule-header">
+              <span><b>§10</b> Safezones und Respawn-Bereiche</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>In ausgewiesenen Safezones sind Überfälle, Entführungen, Schüsse und Provokationen verboten.</li>
+                <li>Spieler dürfen nicht in Safezones fliehen, um einer bereits laufenden Situation zu entkommen.</li>
+                <li>Das Warten an Ein- oder Ausgängen einer Safezone, um Spieler direkt abzufangen, ist verboten.</li>
+                <li>Spawn- und Respawn-Bereiche dürfen nicht beobachtet oder abgecampt werden.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card reveal" data-category="support">
+            <button class="rule-header">
+              <span><b>§11</b> Support</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <ul>
+                <li>Laufende RP-Situationen werden nicht wegen einer OOC-Diskussion unterbrochen. Streitfälle sind danach im Support zu klären.</li>
+                <li>Supportfälle sollten nach Möglichkeit mit Clips oder Screenshots belegt werden.</li>
+                <li>Aufnahmen dürfen nicht manipuliert oder bewusst aus dem Zusammenhang gerissen werden.</li>
+                <li>Supportentscheidungen sind zu respektieren. Beschwerden sind sachlich über den vorgesehenen Weg einzureichen.</li>
+                <li>Regellücken dürfen nicht absichtlich ausgenutzt werden. Die Serverleitung entscheidet im Sinne eines fairen RP.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="rule-card principle reveal" data-category="allgemein">
+            <button class="rule-header">
+              <span><b>GRUNDSATZ</b> Fairness vor Gewinnen</span><span class="plus">+</span>
+            </button>
+            <div class="rule-content">
+              <p>
+                Handle fair, schütze dein Leben und gib anderen Spielern die Möglichkeit,
+                gutes RP zu entwickeln. Gewinnen ist weniger wichtig als eine gemeinsame,
+                glaubwürdige Geschichte.
+              </p>
+            </div>
+          </article>
+
+          <p id="noRules" class="no-results">Keine passende Regel gefunden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="fraktionen" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">WÄHLE DEINEN WEG</p>
+        <h2>FRAKTIONEN</h2>
+      </div>
+
+      <div class="faction-grid">
+        <article class="faction-card atlas reveal">
+          <div class="faction-image"></div>
+          <div class="faction-content">
+            <p>ORDNUNG · SCHUTZ · WIEDERAUFBAU</p>
+            <h3>ATLAS<br>EINHEIT</h3>
+            <span>Die letzte organisierte Schutzmacht der Stadt. Sie sichert Gebiete und schützt die Bevölkerung.</span>
+          </div>
+        </article>
+
+        <article class="faction-card raiders reveal">
+          <div class="faction-image"></div>
+          <div class="faction-content">
+            <p>CHAOS · MACHT · ÜBERLEBEN</p>
+            <h3>THE<br>RAIDERS</h3>
+            <span>Eine Gruppierung, die Gebiete erobert, Infrastruktur sabotiert und sich nimmt, was sie braucht.</span>
+          </div>
+        </article>
+
+        <article class="faction-card ems reveal">
+          <div class="faction-image"></div>
+          <div class="faction-content">
+            <p>MEDIZIN · NEUTRALITÄT · RETTUNG</p>
+            <h3>EMS</h3>
+            <span>Medizinische Versorgung in einer Welt, in der jeder Einsatz zur Gefahr werden kann.</span>
+          </div>
+        </article>
+
+        <article class="faction-card survivor reveal">
+          <div class="faction-image"></div>
+          <div class="faction-content">
+            <p>FREIHEIT · HANDEL · ENTDECKUNG</p>
+            <h3>SURVIVOR</h3>
+            <span>Freie Überlebende, die looten, handeln, reisen und ihre eigene Geschichte schreiben.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="team" class="team-section">
+      <div class="team-inner">
+        <div class="section-heading reveal">
+          <p class="eyebrow">AUTOMATISCH AUS DISCORD</p>
+          <h2>UNSER TEAM</h2>
+          <p>
+            Die Teammitglieder werden anhand ihrer Discord-Rollen geladen.
+            Dafür muss die kostenlose Worker-API aus dem Ordner <strong>cloudflare-worker</strong> eingerichtet werden.
+          </p>
+        </div>
+
+        <div id="teamLoading" class="team-message">Discord-Team wird geladen …</div>
+        <div id="teamError" class="team-message error" hidden>
+          Die Discord-Verbindung ist noch nicht eingerichtet. Trage deine Worker-Adresse in <strong>config.js</strong> ein.
+        </div>
+
+        <div id="teamGroups" class="team-groups"></div>
+
+        <div class="discord-join reveal">
+          <div>
+            <p class="eyebrow">WERDE TEIL DER COMMUNITY</p>
+            <h3>BETRITT DEN BLACKOUT</h3>
+            <p>News, Bewerbungen, Support und alle wichtigen Informationen findest du auf unserem Discord.</p>
+          </div>
+          <a class="button primary" data-discord-link target="_blank" rel="noopener">Discord beitreten</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#start" class="brand">
+      <img src="assets/blackout-logo.png" alt="Blackout RP">
+      <span>BLACKOUT <b>RP</b></span>
+    </a>
+    <p>© <span id="year"></span> Blackout RP. Alle Rechte vorbehalten.</p>
+    <div class="footer-links">
+      <a href="#regelwerk">Regelwerk</a>
+      <a data-discord-link target="_blank" rel="noopener">Discord</a>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Nach oben">↑</button>
+
+  <script src="config.js"></script>
+  <script src="news.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
