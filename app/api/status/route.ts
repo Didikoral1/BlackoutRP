@@ -1,9 +1,10 @@
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const joinCode = process.env.FIVEM_JOIN_CODE;
+  const serverAddress = process.env.FIVEM_SERVER_ADDRESS;
+  const joinCode = process.env.FIVEM_JOIN_CODE || "xllzq5m";
 
-  if (!joinCode || joinCode === "DEIN_FIVEM_JOIN_CODE") {
+  if (!serverAddress) {
     return Response.json({
       online: false,
       clients: 0,
@@ -14,29 +15,36 @@ export async function GET() {
 
   try {
     const response = await fetch(
-      `https://servers-frontend.fivem.net/api/servers/single/${encodeURIComponent(joinCode)}`,
+      `http://${serverAddress}/dynamic.json`,
       {
-        cache: "no-store",
-        headers: { "User-Agent": "Blackout-RP-Website/1.0" }
+        cache: "no-store"
       }
     );
 
-    if (!response.ok) throw new Error("FiveM-Server nicht erreichbar");
+    if (!response.ok) {
+      throw new Error(`FiveM antwortet mit Status ${response.status}`);
+    }
 
-    const payload = await response.json();
-    const data = payload.Data || payload.data || {};
+    const data = await response.json();
 
     return Response.json(
       {
         online: true,
         clients: Number(data.clients || 0),
         maxClients: Number(data.sv_maxclients || 0),
-        hostname: String(data.hostname || "Blackout RP").replace(/\^[0-9]/g, ""),
+        hostname: String(data.hostname || "Blackout RP")
+          .replace(/\^[0-9]/g, ""),
         joinUrl: `https://cfx.re/join/${joinCode}`
       },
-      { headers: { "Cache-Control": "public, max-age=30" } }
+      {
+        headers: {
+          "Cache-Control": "public, max-age=20"
+        }
+      }
     );
-  } catch {
+  } catch (error) {
+    console.error("FiveM-Statusfehler:", error);
+
     return Response.json({
       online: false,
       clients: 0,
