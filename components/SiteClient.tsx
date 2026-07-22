@@ -42,6 +42,14 @@ const pages: { id: SitePage; number: string; label: string; href: string }[] = [
   { id: "regeln", number: "06", label: "Regeln", href: "/regeln" }
 ];
 
+const pageHeaders: Record<Exclude<SitePage, "start">, { code: string; eyebrow: string; title: string; text: string; image: string }> = {
+  news: { code: "02", eyebrow: "MELDUNGEN AUS DER SPERRZONE", title: "News & Updates", text: "Einsatzberichte, Änderungen und Neuigkeiten aus der Welt von Blackout RP.", image: "/media/hero-blackout.webp" },
+  server: { code: "03", eyebrow: "BLACKOUT NETWORK", title: "Server", text: "Live-Status, Spielerzahl und direkter Zugang zur Apokalypse.", image: "/media/faction-survivor.webp" },
+  fraktionen: { code: "04", eyebrow: "WÄHLE DEINEN WEG", title: "Fraktionen", text: "Vier Wege. Vier Ideale. Eine Welt, in der jede Entscheidung Folgen hat.", image: "/media/faction-atlas.webp" },
+  team: { code: "05", eyebrow: "DIE MENSCHEN HINTER BLACKOUT", title: "Unser Team", text: "Leitung, Administration und Support – live mit Discord verbunden.", image: "/media/faction-ems.webp" },
+  regeln: { code: "06", eyebrow: "PROTOKOLL BO-RP/26", title: "Regelwerk", text: "Klare Regeln für glaubwürdiges, faires und intensives Roleplay.", image: "/media/faction-raiders.webp" }
+};
+
 function mediaAsset(path: string) {
   return `${path}?v=${ASSET_REVISION}`;
 }
@@ -62,6 +70,7 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
   const [news, setNews] = useState(initialNews);
   const discord = process.env.NEXT_PUBLIC_DISCORD_INVITE || "https://aliaslink.de/r/blackoutrp";
   const joinUrl = status?.joinUrl || "https://cfx.re/join/xllzq5m";
+  const pageHeader = page === "start" ? null : pageHeaders[page];
 
   useEffect(() => {
     if (page !== "start") return;
@@ -200,6 +209,20 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
       </header>
 
       <main className={page === "start" ? "" : "subpageMain"}>
+        {pageHeader && (
+          <section className="pageMasthead" style={{ backgroundImage: `url("${mediaAsset(pageHeader.image)}")` }}>
+            <div className="pageMastheadShade" />
+            <div className="pageMastheadGrid" />
+            <div className="pageMastheadContent">
+              <div className="pageCode">SEKTOR // {pageHeader.code}</div>
+              <p className="eyebrow">{pageHeader.eyebrow}</p>
+              <h1>{pageHeader.title}</h1>
+              <p>{pageHeader.text}</p>
+            </div>
+            <div className="pageMastheadSignal"><span />SIGNAL STABIL</div>
+          </section>
+        )}
+
         {page === "start" && (
           <section className="hero">
             <video autoPlay muted loop playsInline className="heroVideo" poster={mediaAsset("/media/hero-blackout.webp")}>
