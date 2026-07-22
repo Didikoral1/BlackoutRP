@@ -28,6 +28,11 @@ type ServerStatus = {
 };
 
 const STORAGE_KEY = "blackout-rp-news-v2";
+const ASSET_REVISION = "20260722-2";
+
+function mediaAsset(path: string) {
+  return `${path}?v=${ASSET_REVISION}`;
+}
 
 export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) {
   const [loading, setLoading] = useState(true);
@@ -137,7 +142,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
       {loading && (
         <div className="loaderScreen">
           <div className="loaderSmoke" />
-          <div className="loaderMark"><img src="/media/brand-mark.webp" alt="Blackout RP" /></div>
+          <div className="loaderMark"><img src={mediaAsset("/media/brand-mark.webp")} alt="Blackout RP" /></div>
           <p>BLACKOUT PROTOCOL // SYSTEMSTART</p>
           <div className="loaderTrack"><span style={{ width: `${progress}%` }} /></div>
           <strong>{progress}%</strong>
@@ -154,7 +159,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
 
       <header className="navbar">
         <a className="brand" href="#start">
-          <span className="brandMark"><img src="/media/brand-mark.webp" alt="" /></span>
+          <span className="brandMark"><img src={mediaAsset("/media/brand-mark.webp")} alt="" /></span>
           <span className="brandCopy">BLACKOUT <b>RP</b><small>APOCALYPSE ROLEPLAY</small></span>
         </a>
         <button className="menuButton" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menü">
@@ -173,10 +178,10 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
 
       <main>
         <section id="start" className="hero">
-          <video autoPlay muted loop playsInline className="heroVideo" poster="/media/hero-blackout.webp">
+          <video autoPlay muted loop playsInline className="heroVideo" poster={mediaAsset("/media/hero-blackout.webp")}>
             <source src="/media/background.mp4" type="video/mp4" />
           </video>
-          <div className="heroArtwork" />
+          <div className="heroArtwork" style={{ backgroundImage: `url("${mediaAsset("/media/hero-blackout.webp")}")` }} />
           <div className="heroVignette" />
           <div className="heroGrid" aria-hidden="true" />
 
@@ -233,7 +238,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
               <div className="cardTop"><span><i>02</i> LAGEBERICHT</span><a href="#news">ARCHIV</a></div>
               {news.slice(0,3).map((item) => (
                 <div className="miniNews" key={item.title}>
-                  <img src={item.image} alt={item.title} />
+                  <img src={mediaAsset(item.image)} alt={item.title} />
                   <div><small>{item.date}</small><b>{item.title}</b><p>{item.text}</p></div>
                 </div>
               ))}
@@ -246,7 +251,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
           <div className="newsGrid">
             {news.map((item, index) => (
               <article className={`newsCard ${index === 0 ? "featured" : ""}`} key={item.title}
-                style={{ backgroundImage: `linear-gradient(0deg,rgba(5,4,4,.98),rgba(5,4,4,.1)),url("${item.image}")` }}>
+                style={{ backgroundImage: `linear-gradient(0deg,rgba(5,4,4,.98),rgba(5,4,4,.1)),url("${mediaAsset(item.image)}")` }}>
                 <div className="newsMeta"><span>0{index + 1}</span><time>{item.date}</time></div><h3>{item.title}</h3><p>{item.text}</p>
               </article>
             ))}
@@ -259,7 +264,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
             {factions.map((faction, index) => (
               <button className={`factionCard ${faction.id}`} key={faction.id} onClick={() => setActiveFaction(faction)}
                 style={{ "--faction-accent": faction.accent } as React.CSSProperties}>
-                <div className="factionBackdrop" style={{ backgroundImage: `url("${faction.image}")` }} />
+                <div className="factionBackdrop" style={{ backgroundImage: `url("${mediaAsset(faction.image)}")` }} />
                 <div className="factionText">
                   <div className="factionIndex">FRAKTION // 0{index + 1}</div>
                   <p>{faction.subtitle}</p><h3>{faction.name}</h3><span>{faction.description}</span><b>DOSSIER ÖFFNEN ↗</b>
@@ -328,7 +333,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
         <div className="modalBackdrop" onClick={() => setActiveFaction(null)}>
           <article className="factionModal" onClick={(e) => e.stopPropagation()}>
             <button className="modalClose" onClick={() => setActiveFaction(null)}>×</button>
-            <div className="modalHero" style={{ backgroundImage: `linear-gradient(0deg,#090807,transparent),url("${activeFaction.image}")` }} />
+            <div className="modalHero" style={{ backgroundImage: `linear-gradient(0deg,#090807,transparent),url("${mediaAsset(activeFaction.image)}")` }} />
             <p className="eyebrow">{activeFaction.subtitle}</p>
             <h2>{activeFaction.name}</h2>
             <p>{activeFaction.description}</p>
@@ -339,7 +344,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
       )}
 
       <footer>
-        <div className="footerBrand"><span className="brandMark"><img src="/media/brand-mark.webp" alt="" /></span><div><b>BLACKOUT RP</b><small>Wenn die Lichter ausgehen, beginnt deine Geschichte.</small></div></div>
+        <div className="footerBrand"><span className="brandMark"><img src={mediaAsset("/media/brand-mark.webp")} alt="" /></span><div><b>BLACKOUT RP</b><small>Wenn die Lichter ausgehen, beginnt deine Geschichte.</small></div></div>
         <p>© {new Date().getFullYear()} Blackout RP · BO-RP/26</p>
         <a href="/admin">News Admin ↗</a>
       </footer>
@@ -350,3 +355,4 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
 function Heading({ eyebrow, title, children }: { eyebrow: string; title: string; children?: React.ReactNode }) {
   return <div className="heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{children && <div className="headingText">{children}</div>}</div>;
 }
+
