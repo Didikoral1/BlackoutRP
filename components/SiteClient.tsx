@@ -264,7 +264,6 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
 
         {page === "news" && (
           <section className="section">
-            <Heading eyebrow="NEUIGKEITEN AUS DER SPERRZONE" title="NEWS & UPDATES">Alle Meldungen des Blackout-RP-Servers an einem Ort.</Heading>
             <div className="newsGrid">
               {news.map((item, index) => (
                 <article className={`newsCard ${index === 0 ? "featured" : ""}`} key={`${item.title}-${index}`}
@@ -279,7 +278,6 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
 
         {page === "server" && (
           <section className="section serverPage">
-            <Heading eyebrow="LIVE-VERBINDUNG" title="SERVER">Status, Spielerzahl und der direkte Zugang zum Blackout-RP-Server.</Heading>
             <div className="dashboardGrid serverStandaloneGrid">
               <article className="dashboardCard serverCard">
                 <div className="cardTop"><span><i>01</i> SERVER STATUS</span><b className={status?.online ? "green" : "red"}>{status?.online ? "● ONLINE" : "● OFFLINE"}</b></div>
@@ -308,7 +306,6 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
 
         {page === "fraktionen" && (
           <section className="section">
-            <Heading eyebrow="WÄHLE DEINEN WEG" title="FRAKTIONEN">Entdecke die Gruppen, Aufgaben und Ziele in der Welt von Blackout RP.</Heading>
             <div className="factionGrid">
               {factions.map((faction, index) => (
                 <button className={`factionCard ${faction.id}`} key={faction.id} onClick={() => setActiveFaction(faction)}
@@ -326,7 +323,6 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
 
         {page === "team" && (
           <section className="teamSection">
-            <Heading eyebrow="LIVE AUS DISCORD" title="UNSER TEAM">Mitglieder und Avatare werden automatisch anhand der Discord-Rollen geladen.</Heading>
             {teamError && <div className="notice">{teamError}</div>}
             {!teamError && team.length === 0 && <div className="notice">Teamdaten werden geladen …</div>}
             <div className="teamGroups">
@@ -349,7 +345,6 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
 
         {page === "regeln" && (
           <section className="section">
-            <Heading eyebrow="VERBINDLICH FÜR ALLE SPIELER" title="SERVERREGELWERK">Nutze die Suche oder filtere die Regeln nach Kategorie.</Heading>
             <div className="rulesLayout">
               <aside className="rulesSidebar">
                 <label>REGEL SUCHEN</label>
@@ -400,8 +395,4 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
       </footer>
     </>
   );
-}
-
-function Heading({ eyebrow, title, children }: { eyebrow: string; title: string; children?: React.ReactNode }) {
-  return <div className="heading"><p className="eyebrow">{eyebrow}</p><h2>{title}</h2>{children && <div className="headingText">{children}</div>}</div>;
 }
