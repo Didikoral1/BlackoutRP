@@ -31,7 +31,7 @@ type ServerStatus = {
 
 const NEWS_STORAGE_KEY = "blackout-rp-news-v2";
 const RULES_STORAGE_KEY = "blackout-rp-rules-v1";
-const ASSET_REVISION = "20260722-3";
+const ASSET_REVISION = "20260722-4";
 
 const pages: { id: SitePage; number: string; label: string; href: string }[] = [
   { id: "start", number: "01", label: "Start", href: "/" },
@@ -183,7 +183,6 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
       )}
 
       <div className="weatherFx" aria-hidden="true">
-        <div className="rain" />
         <div className="ash ashOne" />
         <div className="ash ashTwo" />
         <div className="smoke smokeOne" />
