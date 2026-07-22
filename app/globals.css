@@ -770,7 +770,87 @@ nav a.active::after { width: 100%; }
 
 .subpageMain > .section,
 .subpageMain > .teamSection {
-  min-height: calc(100vh - 86px);
+  min-height: auto;
+}
+
+.pageMasthead {
+  position: relative;
+  min-height: 470px;
+  padding: 90px max(22px, calc((100vw - var(--max)) / 2));
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-strong);
+  background-position: center 35%;
+  background-size: cover;
+}
+
+.pageMastheadShade,
+.pageMastheadGrid {
+  position: absolute;
+  inset: 0;
+}
+
+.pageMastheadShade {
+  background:
+    linear-gradient(90deg, rgba(4,5,6,.98) 0%, rgba(4,5,6,.78) 46%, rgba(4,5,6,.28) 100%),
+    linear-gradient(0deg, #050506 0%, transparent 55%);
+}
+
+.pageMastheadGrid {
+  opacity: .13;
+  background-image:
+    linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(90deg, black, transparent 75%);
+}
+
+.pageMastheadContent {
+  position: relative;
+  z-index: 2;
+  width: min(820px, 100%);
+}
+
+.pageCode {
+  margin-bottom: 24px;
+  color: #6f706d;
+  font: 800 8px/1 var(--condensed);
+  letter-spacing: .22em;
+}
+
+.pageMasthead h1 {
+  margin: 12px 0 18px;
+  font: 400 clamp(70px, 10vw, 138px)/.78 var(--display);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+
+.pageMastheadContent > p:last-child {
+  max-width: 620px;
+  color: #b5afa7;
+  font-size: 15px;
+}
+
+.pageMastheadSignal {
+  position: absolute;
+  right: max(22px, calc((100vw - var(--max)) / 2));
+  bottom: 42px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #777873;
+  font: 800 7px/1 var(--condensed);
+  letter-spacing: .2em;
+}
+
+.pageMastheadSignal span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 6px rgba(119,188,114,.1), 0 0 18px rgba(119,188,114,.6);
 }
 
 .serverStandaloneGrid {
@@ -1212,6 +1292,10 @@ footer > a { color: var(--signal-bright); font: 900 8px/1 var(--condensed); lett
   .quickStatus { grid-template-columns: 1fr 1fr; }
   .quickStatus > div { border-bottom: 1px solid var(--line); }
   .scrollCue { bottom: 102px; }
+  .subpageMain { padding-top: 70px; }
+  .pageMasthead { min-height: 390px; padding: 72px 15px 58px; background-position: 62% center; }
+  .pageMasthead h1 { font-size: clamp(58px, 19vw, 92px); }
+  .pageMastheadSignal { display: none; }
   .dashboardSection { margin-top: -48px; padding: 0 15px 75px; }
   .dashboardCard { padding: 19px; }
   .serverNumbers { grid-template-columns: 1fr 1fr; }
