@@ -1,8 +1,8 @@
 import { news } from "@/data/news";
-import HomeClient from "@/components/HomeClient";
+import SiteClient from "@/components/SiteClient";
 
 export const dynamic = "force-dynamic";
 
 export default function Home() {
-  return <HomeClient news={news} />;
+  return <SiteClient page="start" initialNews={news} />;
 }
