@@ -31,7 +31,7 @@ type ServerStatus = {
 
 const NEWS_STORAGE_KEY = "blackout-rp-news-v2";
 const RULES_STORAGE_KEY = "blackout-rp-rules-v1";
-const ASSET_REVISION = "20260722-4";
+const ASSET_REVISION = "20260722-5";
 
 const pages: { id: SitePage; number: string; label: string; href: string }[] = [
   { id: "start", number: "01", label: "Start", href: "/" },
@@ -206,6 +206,13 @@ export default function SiteClient({ page, initialNews }: { page: SitePage; init
         </nav>
         <a className="discordSmall" href={discord} target="_blank" rel="noreferrer"><i />Discord öffnen</a>
       </header>
+
+      <div className="emergencyTicker" aria-hidden="true">
+        <span>POWER GRID // OFFLINE</span>
+        <span>BLACKOUT EMERGENCY NETWORK</span>
+        <span>SEKTOR 07 // SAN ANDREAS</span>
+        <span>ÜBERTRAGUNG AKTIV</span>
+      </div>
 
       <main className={page === "start" ? "" : "subpageMain"}>
         {pageHeader && (
