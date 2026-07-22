@@ -321,6 +321,9 @@ nav a::after {
 
 nav a:hover { color: white; }
 nav a:hover::after { width: 100%; }
+nav a.active { color: white; }
+nav a.active small { color: var(--signal-bright); }
+nav a.active::after { width: 100%; }
 
 .discordSmall {
   min-height: 42px;
@@ -760,6 +763,35 @@ nav a:hover::after { width: 100%; }
   background: linear-gradient(90deg, transparent, var(--line-strong));
 }
 
+.subpageMain {
+  min-height: calc(100vh - 150px);
+  padding-top: 86px;
+}
+
+.subpageMain > .section,
+.subpageMain > .teamSection {
+  min-height: calc(100vh - 86px);
+}
+
+.serverStandaloneGrid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+}
+
+.serverBriefing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.serverLead {
+  max-width: 560px;
+  margin: 42px 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.serverActions { display: flex; flex-wrap: wrap; gap: 12px; }
+
 .heading {
   position: relative;
   max-width: 850px;
@@ -1031,6 +1063,79 @@ nav a:hover::after { width: 100%; }
 .adminList p { color: var(--muted); font-size: 13px; }
 .adminList button { padding: 9px 13px; border: 1px solid var(--signal); background: none; color: white; }
 .resetButton { margin-top: 20px; }
+
+/* Extended content admin */
+.adminLogin h1 { font: 400 clamp(44px, 7vw, 70px)/.9 var(--display); letter-spacing: .02em; }
+.adminLogin .eyebrow { color: var(--signal-bright); }
+.adminLogin .adminError { color: #ef6a60; }
+.adminPanel { padding-bottom: 130px; }
+.adminHeader small { color: var(--muted); }
+.adminTabs { margin-bottom: 24px; display: flex; gap: 8px; }
+.adminTabs button {
+  padding: 13px 20px;
+  border: 1px solid var(--line);
+  background: #090a0b;
+  color: var(--muted);
+  cursor: pointer;
+  font: 900 9px/1 var(--condensed);
+  letter-spacing: .13em;
+}
+.adminTabs button.active { border-color: var(--signal); background: rgba(199,59,49,.1); color: white; }
+.adminPanel label { display: grid; gap: 7px; color: #87837d; font: 800 9px/1.4 var(--condensed); letter-spacing: .08em; text-transform: uppercase; }
+.adminPanel input,
+.adminPanel textarea,
+.adminPanel select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  outline: 0;
+  background: #090a0b;
+  color: white;
+  font: 400 13px/1.5 Arial, sans-serif;
+  text-transform: none;
+}
+.adminPanel input:focus,
+.adminPanel textarea:focus,
+.adminPanel select:focus { border-color: rgba(199,59,49,.7); }
+.adminPanel textarea { min-height: 110px; resize: vertical; }
+.adminFormGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.adminSectionTitle { margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.adminSectionTitle p { color: var(--signal-bright); font: 900 8px/1 var(--condensed); letter-spacing: .16em; }
+.adminSectionTitle h2 { margin-top: 7px; }
+.adminSectionTitle span { color: var(--muted); font-size: 11px; }
+.adminNewsList article { grid-template-columns: 150px minmax(0, 1fr) auto; align-items: start; }
+.adminNewsList img { width: 150px; height: 110px; }
+.adminEntryFields { display: grid; gap: 12px; }
+.adminRulesList article { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
+.adminRulesList .adminSectionTitle > button { padding: 12px 16px; border: 1px solid var(--signal); background: rgba(199,59,49,.1); color: white; }
+.ruleEditorTop { display: grid; grid-template-columns: 110px minmax(220px, 1fr) 190px auto; gap: 12px; align-items: end; }
+.checkboxLabel { min-height: 46px; display: flex !important; grid-template-columns: auto 1fr; align-items: center; }
+.checkboxLabel input { width: 17px; height: 17px; accent-color: var(--signal); }
+.ruleSectionEditor { padding: 18px; display: grid; gap: 12px; border: 1px solid var(--line); background: #0b0c0d; }
+.dangerButton { justify-self: start; border-color: rgba(199,59,49,.55) !important; color: #e8877f !important; cursor: pointer; }
+.publishBar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  min-height: 82px;
+  padding: 15px max(20px, calc((100vw - 1100px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--line-strong);
+  background: rgba(5,5,6,.96);
+  backdrop-filter: blur(16px);
+}
+.publishBar > div:first-child { display: flex; flex-direction: column; }
+.publishBar b { font-size: 12px; }
+.publishBar span { margin-top: 4px; color: var(--green); font-size: 10px; }
+.publishActions { display: flex; align-items: center; gap: 10px; }
+.publishActions .resetButton { margin: 0; padding: 12px 15px; border: 1px solid var(--line); background: none; color: var(--muted); cursor: pointer; }
+.publishButton { padding: 14px 21px; border: 0; background: var(--signal); color: white; cursor: pointer; font-weight: 900; }
+.publishButton:disabled { cursor: not-allowed; opacity: .35; }
 
 /* Footer */
 footer {
