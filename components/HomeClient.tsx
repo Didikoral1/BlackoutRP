@@ -137,8 +137,8 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
       {loading && (
         <div className="loaderScreen">
           <div className="loaderSmoke" />
-          <img src="/blackout-logo.png" alt="Blackout RP" />
-          <p>SYSTEME WERDEN HOCHGEFAHREN</p>
+          <div className="loaderMark"><img src="/media/brand-mark.webp" alt="Blackout RP" /></div>
+          <p>BLACKOUT PROTOCOL // SYSTEMSTART</p>
           <div className="loaderTrack"><span style={{ width: `${progress}%` }} /></div>
           <strong>{progress}%</strong>
         </div>
@@ -154,33 +154,35 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
 
       <header className="navbar">
         <a className="brand" href="#start">
-          <img src="/blackout-logo.png" alt="Blackout RP" />
-          <span>BLACKOUT <b>RP</b></span>
+          <span className="brandMark"><img src="/media/brand-mark.webp" alt="" /></span>
+          <span className="brandCopy">BLACKOUT <b>RP</b><small>APOCALYPSE ROLEPLAY</small></span>
         </a>
         <button className="menuButton" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menü">
           <span /><span /><span />
         </button>
         <nav className={menuOpen ? "open" : ""}>
           {[
-            ["Start", "start"], ["News", "news"], ["Server", "status"],
-            ["Fraktionen", "fraktionen"], ["Team", "team"], ["Regeln", "regelwerk"]
-          ].map(([label,id]) => (
-            <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>
+            ["01", "Start", "start"], ["02", "News", "news"], ["03", "Server", "status"],
+            ["04", "Fraktionen", "fraktionen"], ["05", "Team", "team"], ["06", "Regeln", "regelwerk"]
+          ].map(([number,label,id]) => (
+            <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}><small>{number}</small>{label}</a>
           ))}
         </nav>
-        <a className="discordSmall" href={discord} target="_blank">Verbinden</a>
+        <a className="discordSmall" href={discord} target="_blank" rel="noreferrer"><i />Server betreten</a>
       </header>
 
       <main>
         <section id="start" className="hero">
-          <video autoPlay muted loop playsInline className="heroVideo">
+          <video autoPlay muted loop playsInline className="heroVideo" poster="/media/hero-blackout.webp">
             <source src="/media/background.mp4" type="video/mp4" />
           </video>
           <div className="heroArtwork" />
           <div className="heroVignette" />
+          <div className="heroGrid" aria-hidden="true" />
 
           <div className="heroContent">
-            <p className="eyebrow">FIVEM APOCALYPSE ROLEPLAY</p>
+            <div className="heroProtocol"><span>NOTFALLPROTOKOLL</span><b>SEKTOR 07 // SAN ANDREAS</b></div>
+            <p className="eyebrow">DEUTSCHER FIVEM APOCALYPSE ROLEPLAY</p>
             <h1>BLACKOUT <span>RP</span></h1>
             <h2>ÜBERLEBEN. KÄMPFEN. GESTALTEN.</h2>
             <p className="lead">
@@ -188,7 +190,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
               Entscheide selbst, ob du Hoffnung bringst oder das Chaos beherrschst.
             </p>
             <div className="actions">
-              <a className="button primary" href={status?.joinUrl || `https://cfx.re/join/xllzq5m`} target="_blank">Jetzt verbinden</a>
+              <a className="button primary" href={status?.joinUrl || `https://cfx.re/join/xllzq5m`} target="_blank" rel="noreferrer">Jetzt verbinden <span>↗</span></a>
               <a className="button secondary" href="#fraktionen">Mehr erfahren</a>
             </div>
 
@@ -202,12 +204,19 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
               <div><small>NÄCHSTER RESTART</small><strong>{restart}</strong></div>
             </div>
           </div>
+
+          <aside className="heroTelemetry" aria-label="Server-Kennung">
+            <span>BLACKOUT NETWORK</span>
+            <b>48° 08′ N // 11° 34′ E</b>
+            <small>VERSCHLÜSSELTES SIGNAL · BO-RP/26</small>
+          </aside>
+          <a className="scrollCue" href="#status"><span />STATUS ÖFFNEN</a>
         </section>
 
         <section id="status" className="dashboardSection">
           <div className="dashboardGrid">
             <article className="dashboardCard serverCard">
-              <div className="cardTop"><span>SERVER STATUS</span><b className={status?.online ? "green" : "red"}>{status?.online ? "● ONLINE" : "● OFFLINE"}</b></div>
+              <div className="cardTop"><span><i>01</i> SERVER STATUS</span><b className={status?.online ? "green" : "red"}>{status?.online ? "● ONLINE" : "● OFFLINE"}</b></div>
               <div className="serverNumbers">
                 <div><strong>{status?.clients ?? 0}</strong><span>SPIELER</span></div>
                 <div><strong>{status?.maxClients || 64}</strong><span>SLOTS</span></div>
@@ -216,15 +225,15 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
               </div>
               <div className="connectRow">
                 <div><b>{status?.hostname || "Blackout RP | Apocalypse"}</b><small>Survive. Build. Dominate.</small></div>
-                <a href={status?.joinUrl || "https://cfx.re/join/xllzq5m"} target="_blank">VERBINDEN</a>
+                <a href={status?.joinUrl || "https://cfx.re/join/xllzq5m"} target="_blank" rel="noreferrer">VERBINDEN ↗</a>
               </div>
             </article>
 
             <article className="dashboardCard newsMini">
-              <div className="cardTop"><span>NEUESTE NEWS</span><a href="/admin">ADMIN</a></div>
+              <div className="cardTop"><span><i>02</i> LAGEBERICHT</span><a href="#news">ARCHIV</a></div>
               {news.slice(0,3).map((item) => (
                 <div className="miniNews" key={item.title}>
-                  <img src={item.image} alt="" />
+                  <img src={item.image} alt={item.title} />
                   <div><small>{item.date}</small><b>{item.title}</b><p>{item.text}</p></div>
                 </div>
               ))}
@@ -238,7 +247,7 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
             {news.map((item, index) => (
               <article className={`newsCard ${index === 0 ? "featured" : ""}`} key={item.title}
                 style={{ backgroundImage: `linear-gradient(0deg,rgba(5,4,4,.98),rgba(5,4,4,.1)),url("${item.image}")` }}>
-                <span>{item.date}</span><h3>{item.title}</h3><p>{item.text}</p>
+                <div className="newsMeta"><span>0{index + 1}</span><time>{item.date}</time></div><h3>{item.title}</h3><p>{item.text}</p>
               </article>
             ))}
           </div>
@@ -247,11 +256,13 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
         <section id="fraktionen" className="section">
           <Heading eyebrow="WÄHLE DEINEN WEG" title="FRAKTIONEN" />
           <div className="factionGrid">
-            {factions.map((faction) => (
-              <button className={`factionCard ${faction.id}`} key={faction.id} onClick={() => setActiveFaction(faction)}>
+            {factions.map((faction, index) => (
+              <button className={`factionCard ${faction.id}`} key={faction.id} onClick={() => setActiveFaction(faction)}
+                style={{ "--faction-accent": faction.accent } as React.CSSProperties}>
                 <div className="factionBackdrop" style={{ backgroundImage: `url("${faction.image}")` }} />
                 <div className="factionText">
-                  <p>{faction.subtitle}</p><h3>{faction.name}</h3><span>{faction.description}</span><b>MEHR ERFAHREN →</b>
+                  <div className="factionIndex">FRAKTION // 0{index + 1}</div>
+                  <p>{faction.subtitle}</p><h3>{faction.name}</h3><span>{faction.description}</span><b>DOSSIER ÖFFNEN ↗</b>
                 </div>
               </button>
             ))}
@@ -322,12 +333,16 @@ export default function HomeClient({ news: initialNews }: { news: NewsItem[] }) 
             <h2>{activeFaction.name}</h2>
             <p>{activeFaction.description}</p>
             <ul>{activeFaction.mission.map((item) => <li key={item}>{item}</li>)}</ul>
-            <a className="button primary" href={discord} target="_blank">Auf Discord bewerben</a>
+            <a className="button primary" href={discord} target="_blank" rel="noreferrer">Auf Discord bewerben <span>↗</span></a>
           </article>
         </div>
       )}
 
-      <footer><img src="/blackout-logo.png" alt="" /><p>© {new Date().getFullYear()} Blackout RP</p><a href="/admin">News Admin</a></footer>
+      <footer>
+        <div className="footerBrand"><span className="brandMark"><img src="/media/brand-mark.webp" alt="" /></span><div><b>BLACKOUT RP</b><small>Wenn die Lichter ausgehen, beginnt deine Geschichte.</small></div></div>
+        <p>© {new Date().getFullYear()} Blackout RP · BO-RP/26</p>
+        <a href="/admin">News Admin ↗</a>
+      </footer>
     </>
   );
 }
