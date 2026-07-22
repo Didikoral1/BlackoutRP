@@ -21,8 +21,8 @@ export const factions: Faction[] = [
       "Konvois und Ressourcen sichern",
       "Recht und Ordnung wiederherstellen"
     ],
-    image: "/media/blackout-ai-hero.png",
-    accent: "#cf3a31"
+    image: "/media/faction-atlas.webp",
+    accent: "#d14a3f"
   },
   {
     id: "raiders",
@@ -36,8 +36,8 @@ export const factions: Faction[] = [
       "Infrastruktur sabotieren",
       "Ressourcen und Waffen sichern"
     ],
-    image: "/media/blackout-ai-hero.png",
-    accent: "#a52b25"
+    image: "/media/faction-raiders.webp",
+    accent: "#b82620"
   },
   {
     id: "ems",
@@ -51,8 +51,8 @@ export const factions: Faction[] = [
       "Sichere Behandlungszonen schaffen",
       "Medizinische Ressourcen verwalten"
     ],
-    image: "/media/blackout-ai-hero.png",
-    accent: "#356f9f"
+    image: "/media/faction-ems.webp",
+    accent: "#58a7c6"
   },
   {
     id: "survivor",
@@ -66,7 +66,7 @@ export const factions: Faction[] = [
       "Zivile Berufe ausüben",
       "Eigene Gruppen bilden"
     ],
-    image: "/media/blackout-ai-hero.png",
-    accent: "#899c3b"
+    image: "/media/faction-survivor.webp",
+    accent: "#93a35b"
   }
 ];
